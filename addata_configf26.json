@@ -1,0 +1,20 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT addata.id,(CASE WHEN u.risk_4=1 OR u.risk_1=1 OR u.risk_2=1 OR u.risk_3=1 THEN 1 ELSE 0 END ) as risk ,addata.tags as tags,CONCAT(\"[\",t.tags,\"]\") as tags_list,CONCAT(\"[\",t.trackers_list,\"]\") as tracker_list,addata.width/addata.height as whdivided,addata.advertiser as advertiser_na,addata.publisher as publisher_na,addata.trackers as tracker_na,addata.attribute08,addata.attribute06,addata.title as title_no,addata.id as _id,addata.width * addata.height as wharea,main_index.`subject`,addata.url,addata.session_id,addata.volume,addata.material,addata.screen,addata.url_md5,a.publisher_advertiser,main_index.ranker as ad_rank,b.tracker_subjects,b.role,b.host as domain_host,b.brand_ads,b.publisher_ads,b.tracker_advertiser,b.brand_subjects,b.tracker_ads,d.title as subject_title,d.md5 as subject_md5,addata.advertiser,addata.trackers, addata.publisher,addata.platform, addata.type,addata.created_date,FROM_UNIXTIME(addata.created_date/1000,\"%Y-%m-%d %H:%i:%s\") as date5,addata.shape,addata.domain,addata.attribute04,addata.width,addata.height ,addata.size,addata.x,addata.y,IF(LEFT(addata.target_url,1)=\"{\" || RIGHT(addata.target_url,1)=\"}\",\"\",addata.target_url) as target_url,addata.thumbnail,addata.last_seen,addata.md5,addata.thumb_width,addata.thumb_height,addata.original_url,addata.thumb_url,addata.share_url, addata.title,b.host as advertiser_name, concat(IFNULL(b.cname,\"\"), IFNULL(b.ename,\"\")) as advertiser_name_title, concat(b.host, \" \", concat(IFNULL(b.cname,\"\"), IFNULL(b.ename,\"\"))) as advertiser_full,  a.host as publisher_name,  concat(a.host, \" \", concat(IFNULL(a.cname,\"\"), IFNULL(a.ename,\"\"))) as publisher_full, c.host as tracker_name, concat(c.host, \" \", concat(IFNULL(c.cname,\"\"), IFNULL(c.ename,\"\"))) as tracker_full, d.rank as subject_rand FROM addata LEFT JOIN main_index on addata.id = main_index.id LEFT JOIN addata_tags as t ON (addata.id = t.id) LEFT JOIN subjects as d ON (d.id = main_index.subject) LEFT JOIN domains as a ON (a.id = main_index.publisher) LEFT JOIN domains as b ON (b.id = main_index.advertiser) LEFT JOIN domains as c ON (c.id = main_index.tracker) LEFT JOIN original_urls AS u ON (u.md5=addata.url_md5)  WHERE addata.id<=4000000 ORDER BY addata.id desc ",
+        "index" : "addata_v26",
+        "type" : "addata_index",
+         "metrics" : {
+            "enabled" : true
+        },
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.58",
+            "port" : 9300
+        }
+    }
+}

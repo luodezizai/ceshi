@@ -1,0 +1,19 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT addata.id,addata.title,addata.attribute06,addata.id as _id,addata.material,addata.advertiser,addata.trackers, addata.publisher,addata.platform, addata.type,addata.created_date,addata.shape,addata.domain,addata.attribute04,addata.width,addata.height ,addata.size,addata.x,addata.y, addata.target_url,addata.thumbnail,addata.thumb_width,addata.thumb_height,addata.original_url,addata.thumb_url,addata.share_url,addata_ott.type as ott_type FROM addata_ott JOIN addata on addata_ott.ad_id=addata.id ",
+        "index" : "addata_ott_v1",
+        "type" : "addata_index",
+         "metrics" : {
+            "enabled" : true
+        },
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.58",
+            "port" : 9300
+        }
+    }
+}

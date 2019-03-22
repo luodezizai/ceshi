@@ -1,0 +1,19 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT id,id as _id,ad_id,md5,subject_md5,advertiser,advertiser as advertiser_na,trackers,trackers as trackers_na,CONCAT(\"[\",replace(trackers_list,\";\",\",\"),\"]\") as tracker_list,tags ,tags as tags_na,CONCAT(\"[\",replace(tags,\";\",\",\"),\"]\") as tag_list,publisher,publisher as publisher_na,width,height,wharea,role,date5,title,size,type,shape,score,platform,ids_items,max_ids_items,screen_ratio,area_ratio,range_type,created_date from addata_rank_role",
+        "index" : "rank_role_v9",
+        "type" : "addata_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

@@ -1,0 +1,22 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT addata.id,addata.id as _id,addata.title as title_na,b.role,d.md5 as subject_md5,addata.platform, addata.type,addata.created_date,FROM_UNIXTIME(addata.created_date/1000,'%Y-%m-%d %H:%i:%s') as date,addata.shape,addata.attribute04,b.host as advertiser,  a.host as publisher, c.host as tracker FROM addata LEFT JOIN main_index on addata.id = main_index.id LEFT JOIN subjects as d ON (d.id = main_index.subject) LEFT JOIN domains as a ON (a.id = main_index.publisher) LEFT JOIN domains as b ON (b.id = main_index.advertiser) LEFT JOIN domains as c ON (c.id = main_index.tracker) WHERE addata.id<11001617",
+        "index" : "addata_relation_chart",
+        "type" : "addata_index",
+         "metrics" : {
+            "enabled" : true
+        },
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

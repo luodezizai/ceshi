@@ -1,0 +1,16 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+	"url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select *,id as _id,cname as cname_no,host as host_no from domainsup",
+        "index" : "domain_v10",
+        "type" : "domain_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}

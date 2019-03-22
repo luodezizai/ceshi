@@ -1,0 +1,22 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 */5 * * * ?",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT id,md5,host_id as hostid,http_user_agent as hua,http_accept_language as hal,http_referer as hr,query_info,http_accept_encoding as hae,created_at,updated_at,type,alltotal as total,resources from cookie WHERE LENGTH(query_info)<12 and cookie.id>68017",
+        "index" : "cookie_v1",
+        "type" : "cookie_index",
+         "metrics" : {
+            "enabled" : true
+        },
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

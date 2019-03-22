@@ -1,0 +1,29 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select domains.*,domains.id as _id,domains.cname as cname_no,domains.host as host_no,host_meta.description,domain_cats.cats as cats  from domains LEFT JOIN domain_cats on domain_cats.host= domains.host LEFT JOIN host_meta on host_meta.host=domains.host where domains.id<393759",
+        "index" : "domain_v16",
+        "type" : "domain_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.58",
+            "port" : 9300
+        },
+	"type_mapping": {
+	  "domain_index":{
+			"properties":{
+			"cats":{
+
+ 				"index": "not_analyzed",
+                    	"type": "string"
+				}
+			
+}
+		}
+	}
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select *,id as _id from dict_domain",
+        "index" : "dict_domain_v1",
+        "type" : "dict_domain_index",
+         "metrics" : {
+            "enabled" : true
+        },
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

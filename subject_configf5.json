@@ -1,0 +1,17 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select s.*,s.id as _id,a.type as type from subjects as s JOIN addata_2018 as a on s.ad_id=a.id where s.id<2417452 ORDER BY s.id DESC ",
+        "index" : "subject_v5",
+        "type" : "subject_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.58",
+            "port" : 9300
+        }
+    }
+}

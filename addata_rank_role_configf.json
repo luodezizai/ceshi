@@ -1,0 +1,19 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "SELECT a.id,a.id as _id,a.ad_id,a.md5,a.subject_md5,a.advertiser,a.advertiser as advertiser_na,a.trackers,a.trackers as trackers_na,CONCAT(\"[\",replace(a.trackers,\";\",\",\"),\"]\") as tracker_list,b.tags,b.tags as tags_na,CONCAT(\"[\",replace(b.tags,\";\",\",\"),\"]\") as tag_list,a.publisher,a.publisher as publisher_na,a.width,a.height,a.wharea,a.role,a.date5,a.title,a.size,a.type,a.shape,a.score,a.platform,a.ids_items,a.max_ids_items,a.screen_ratio,a.area_ratio,a.range_type,a.created_date from addata_rank_role as a JOIN addata as b on a.ad_id=b.id",
+        "index" : "rank_role_v6",
+        "type" : "addata_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

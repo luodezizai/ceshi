@@ -1,0 +1,16 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+	"url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select domains.*,domains.id as _id,domains.cname as cname_no,domains.host as host_no,host_meta.description from domainsup as domains  LEFT JOIN host_meta on host_meta.host=domains.host",
+        "index" : "domain_v13",
+        "type" : "domain_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.58",
+            "port" : 9300
+        }
+    }
+}

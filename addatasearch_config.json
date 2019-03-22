@@ -1,0 +1,19 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://192.168.1.24:3306/adbug",
+        "user" : "ooM10",
+        "password" : "Y5djQBVpHPWYH9tZ",
+        "sql" : "SELECT id,id as _id,FROM_UNIXTIME(created_date/1000,'%Y%m%d%H') as date_hour_long,title,FROM_UNIXTIME(created_date/1000,'%Y%m') as date_mouth_long,FROM_UNIXTIME(created_date/1000,'%Y%m%d') as date_day_long,domain,domain as domain_na,trackers,trackers as trackers_na,type,status,shape,platform,advertiser,advertiser as advertiser_na,attribute04,attribute06 ,FROM_UNIXTIME(created_date/1000,'%Y') as date_year,FROM_UNIXTIME(created_date/1000,'%Y-%m') as date_mouth,FROM_UNIXTIME(created_date/1000,'%Y-%m-%d') as date_day,FROM_UNIXTIME(created_date/1000,'%Y-%m-%d %H') as date_hour,FROM_UNIXTIME(created_date/1000,'%Y-%m-%d %H:%i:%s') as date,md5(CONCAT(title,advertiser)) as subject_md5,md5 from addata_mid where addata_mid.id>34246661 AND addata_mid.id<48053322",
+        "index" : "addata_search",
+        "type" : "addata_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        }
+    }
+}
+
+

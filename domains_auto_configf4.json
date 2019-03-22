@@ -1,0 +1,20 @@
+{
+    "type" : "jdbc",
+    "jdbc" : {
+        "schedule" : "0 0-59 0-23 ? * *",
+        "url" : "jdbc:mysql://rm-bp1c5x1rhig246p88.mysql.rds.aliyuncs.com:3306/adbugnew",
+        "user" : "adbug",
+        "password" : "2YeoyszrQoUhzubO",
+        "sql" : "select id,id as _id,host ,cname from domains where id<=375567 AND cname!=''",
+        "index" : "domain_auto4",
+        "type" : "domain_index",
+        "elasticsearch" : {
+            "cluster" : "adbuges2",
+            "host" : "192.168.1.47",
+            "port" : 9300
+        },
+        "metrics" : {
+            "enabled" : true
+        }
+    }
+}
